@@ -4,7 +4,7 @@ Welcome to the port of the [Frontend Masters React + XState workshop](https://gi
 
 You can check out
 
-- the [course](https://frontendmasters.com/courses/xstate-react) on Frontend Masters.
+- the [original React app](https://github.com/davidkpiano/frontend-masters-react-workshop) on Frontend Masters.
 - the [Svelte port](https://github.com/annaghi/xstate-svelte-workshop)
 
 ## XState
