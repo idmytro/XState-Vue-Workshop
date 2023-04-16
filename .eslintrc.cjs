@@ -17,5 +17,7 @@ module.exports = {
 		'vue',
 	],
 	rules: {
+		'capitalized-comments': 'off',
+		'vue/multi-word-component-names': 'off',
 	},
 };

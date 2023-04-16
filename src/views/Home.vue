@@ -1,5 +1,6 @@
 <script setup>
-import {VueComponent as Readme} from '../../README.md';
+// Import {VueComponent as Readme} from '../../README.md';
+import Readme from '../../README.md';
 import ScratchApp from '../scratch/ScratchApp.vue';
 </script>
 

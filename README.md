@@ -5,7 +5,7 @@ Welcome to the workshop on modeling state with XState in Vue applications! While
 - [XState docs](https://xstate.js.org/docs/)
 - [@xstate/vue docs](https://xstate.js.org/docs/packages/xstate-vue/)
 
-Edit the `/scratch/ScratchApp.js` file to practice new lessons and techniques. The `<ScratchApp>` component will show up to the right.
+Edit the `/scratch/ScratchApp.vue` file to practice new lessons and techniques. The `<ScratchApp>` component will show up to the right.
 
 ## Exercises
 
