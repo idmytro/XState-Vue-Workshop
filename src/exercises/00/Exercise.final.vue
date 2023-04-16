@@ -15,8 +15,6 @@ const {duration, elapsed, interval} = {
 	elapsed: 0,
 	interval: 0.1,
 };
-
-function handler () {}
 </script>
 
 <template>

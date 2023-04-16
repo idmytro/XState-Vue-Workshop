@@ -1,6 +1,6 @@
 # Exercise 00 - Creating a state machine
 
-In this exercise, you're going to be creating a state machine from scratch, and putting it in [`useReducer`](https://reactjs.org/docs/hooks-reference.html#usereducer).
+In this exercise, you're going to be creating a state machine from scratch, and putting it in [`useReducer`](https://markus.oberlehner.net/blog/usestate-and-usereducer-with-the-vue-3-composition-api/).
 
 ## Goals
 

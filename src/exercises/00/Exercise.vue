@@ -7,15 +7,14 @@ import ProgressCircle from '../../components/ProgressCircle.vue';
 // Import the timer machine and its initial state:
 // import { ... } from './timerMachine';
 
-const state = ''; // delete me - useReducer instead!
-
 const {duration, elapsed, interval} = {
 	duration: 60,
 	elapsed: 0,
 	interval: 0.1,
 };
 
-function handler () {}
+const state = ''; // delete me - useReducer instead!
+function dispatch () {} // delete me - useReducer instead!
 </script>
 
 <template>
@@ -38,13 +37,13 @@ function handler () {}
       <div class="label">{{ state }}</div>
       <div
         class="elapsed"
-        @click="handler"
+        @click="dispatch"
       >
         {{ Math.ceil(duration - elapsed) }}
       </div>
       <div class="controls">
         <button
-        @click="handler"
+        @click="dispatch"
         >
           Reset
         </button>
@@ -52,7 +51,7 @@ function handler () {}
     </div>
     <div class="actions">
       <button
-        @click="handler"
+        @click="dispatch"
         title="Pause timer"
       >
         <FontAwesomeIcon :icon="faPause" />

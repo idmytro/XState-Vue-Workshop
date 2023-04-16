@@ -1,5 +1,5 @@
 <script setup>
-import Readme from '../../README.md';
+import Readme from '../README.md';
 import Scratch from './Scratch.vue';
 </script>
 
