@@ -10,6 +10,7 @@
     "lint": "eslint --ext .js,.jsx,.vue src"
   },
   "dependencies": {
+    "sass": "^1.62.0",
     "vue": "^3.2.45",
     "vue-hooks-api": "^0.0.0-beta.5"
   },
