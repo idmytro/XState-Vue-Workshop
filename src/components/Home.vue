@@ -1,7 +1,6 @@
 <script setup>
-// Import {VueComponent as Readme} from '../../README.md';
 import Readme from '../../README.md';
-import ScratchApp from '../scratch/ScratchApp.vue';
+import Scratch from './Scratch.vue';
 </script>
 
 <template>
@@ -10,7 +9,7 @@ import ScratchApp from '../scratch/ScratchApp.vue';
       <Readme />
     </div>
     <div>
-      <ScratchApp />
+      <Scratch />
     </div>
   </div>
 </template>

@@ -1,0 +1,16 @@
+html {
+  background-color: #18191c;
+}
+
+h1 {
+  margin-top: 0;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
