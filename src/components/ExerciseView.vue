@@ -1,7 +1,7 @@
 <script setup>
 import {useRoute} from 'vue-router';
 import Readme00 from '../exercises/00/README.md';
-import Excercise00 from '../exercises/00/index.vue';
+import Excercise00 from '../exercises/00/Exercise.vue';
 
 const readmes = {
 	'00': Readme00,
@@ -20,11 +20,11 @@ const Excercise = exercises[id];
 <template>
   <div class="exercise">
     <div class="exerciseDescription scrollbar-hide">
-      <RouterLink to="/">← Home</RouterLink>
+      <p class="back-link">
+        <RouterLink to="/">← Home</RouterLink>
+      </p>
       <Readme />
     </div>
-    <div>
-      <Excercise />
-    </div>
+    <Excercise />
   </div>
 </template>

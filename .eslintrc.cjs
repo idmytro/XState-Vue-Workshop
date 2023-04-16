@@ -18,6 +18,8 @@ module.exports = {
 	],
 	rules: {
 		'capitalized-comments': 'off',
+		'no-unused-vars': 'warn',
+		'space-before-function-paren': ['error', 'always'],
 		'vue/multi-word-component-names': 'off',
 	},
 };

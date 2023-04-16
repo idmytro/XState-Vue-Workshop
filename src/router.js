@@ -1,7 +1,7 @@
 import {createRouter, createWebHistory} from 'vue-router';
 import Home from './components/Home.vue';
 import NotFound from './components/NotFound.vue';
-import Exercise from './components/Exercise.vue';
+import ExerciseView from './components/ExerciseView.vue';
 
 const routes = [
 	{
@@ -16,8 +16,8 @@ const routes = [
 	},
 	{
 		path: '/:id',
-		name: 'Exercise',
-		component: Exercise,
+		name: 'ExerciseView',
+		component: ExerciseView,
 	},
 ];
 

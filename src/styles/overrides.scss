@@ -1,3 +1,7 @@
+:root {
+  --h1-margin: 22px;
+}
+
 html {
   background-color: #18191c;
 }
@@ -13,4 +17,9 @@ h1 {
   &::-webkit-scrollbar {
     display: none;
   }
+}
+
+.back-link {
+  margin-top: 0;
+  margin-bottom: var(--h1-margin);
 }
