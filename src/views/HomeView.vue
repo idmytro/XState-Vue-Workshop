@@ -1,12 +1,15 @@
 <script setup>
 import {VueComponent as Readme} from '../../README.md';
+import ScratchApp from '../scratch/ScratchApp.vue';
 </script>
 
 <template>
   <div class="exercise">
-    <div class="exerciseDescription">
+    <div class="exerciseDescription scrollbar-hide">
       <Readme />
     </div>
-    <div></div>
+    <div>
+      <ScratchApp />
+    </div>
   </div>
 </template>

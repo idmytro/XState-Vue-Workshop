@@ -5,6 +5,8 @@
 @import './styles/scratch.scss';
 @import './styles/alarm.scss';
 
+@import './styles/utils.scss';
+
 *,
 *:before,
 *:after {
@@ -28,9 +30,17 @@ body,
   font-size: 16px;
 }
 
+/* 
+  --vp-c-green: #10b981;
+  --vp-c-green-light: #34d399;
+  --vp-c-green-lighter: #6ee7b7;
+  --vp-c-green-dark: #059669;
+  --vp-c-green-darker: #047857;
+*/
+
 :root {
-  --color-primary: #5192e6;
-  --color-primary-light: hsla(214, 75%, 72%, 1);
+  --color-primary: #10b981;
+  --color-primary-light: #6ee7b7;
   --color-secondary: #8b9096;
   --color-gray: #373b41;
   --color-dark-gray: #25272a;
