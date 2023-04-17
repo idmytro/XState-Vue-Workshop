@@ -1,14 +1,18 @@
 <script setup>
 import {useRoute} from 'vue-router';
 import Readme00 from '../exercises/00/README.md';
+import Readme01 from '../exercises/01/README.md';
 import Excercise00 from '../exercises/00/Exercise.vue';
+import Excercise01 from '../exercises/01/Exercise.vue';
 
 const readmes = {
 	'00': Readme00,
+	'01': Readme01,
 };
 
 const exercises = {
 	'00': Excercise00,
+	'01': Excercise01,
 };
 
 const {id} = useRoute().params;
