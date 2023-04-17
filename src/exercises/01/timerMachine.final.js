@@ -1,4 +1,6 @@
-export const timerMachineConfig = {
+import {createMachine} from 'xstate';
+
+export const timerMachine = createMachine({
 	initial: 'idle',
 	states: {
 		idle: {
@@ -18,6 +20,4 @@ export const timerMachineConfig = {
 			},
 		},
 	},
-};
-
-export const timerMachine = (state, event) => timerMachineConfig.states[state]?.on?.[event.type] || state;
+});
