@@ -43,7 +43,7 @@ const {duration, elapsed, interval} = {
       </div>
       <div class="controls">
         <button
-          :style="state !== 'paused' && 'visibility: hidden'"
+          :class="state === 'paused' ? '' : 'invisible'"
           @click="dispatch({type: 'RESET'})"
         >
           Reset

@@ -19,6 +19,10 @@ h1 {
   }
 }
 
+.invisible {
+  visibility: hidden;
+}
+
 .back-link {
   margin-top: 0;
   margin-bottom: var(--h1-margin);

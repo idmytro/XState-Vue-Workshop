@@ -1,20 +1,18 @@
 <script setup>
-import {useReducer} from '../../composables/useReducer';
 import {faPlay, faPause} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome';
 import ProgressCircle from '../../components/ProgressCircle.vue';
 
-// Import the timer machine and its initial state:
-// import { ... } from './timerMachine';
+import {useMachine} from '@xstate/vue';
+import {timerMachine} from './timerMachine.final';
+
+const {state, send} = useMachine(timerMachine);
 
 const {duration, elapsed, interval} = {
 	duration: 60,
 	elapsed: 0,
 	interval: 0.1,
 };
-
-const state = ''; // delete me - useReducer instead!
-function dispatch () {} // delete me - useReducer instead!
 </script>
 
 <template>
@@ -28,22 +26,23 @@ function dispatch () {} // delete me - useReducer instead!
     `"
   >
     <header>
-      <h1>Exercise 00</h1>
+      <h1>Exercise 01 Solution</h1>
     </header>
 
     <ProgressCircle />
 
     <div class="display">
-      <div class="label">{{ state }}</div>
+      <div class="label">{{ state.value }}</div>
       <div
         class="elapsed"
-        @click="dispatch"
+        @click="send({ type: 'TOGGLE' })"
       >
         {{ Math.ceil(duration - elapsed) }}
       </div>
       <div class="controls">
         <button
-          @click="dispatch"
+          :class="state.value === 'paused' ? '' : 'invisible'"
+          @click="send({ type: 'RESET' })"
         >
           Reset
         </button>
@@ -51,15 +50,17 @@ function dispatch () {} // delete me - useReducer instead!
     </div>
     <div class="actions">
       <button
+        v-if="state.value === 'running'"
         title="Pause timer"
-        @click="dispatch"
+        @click="send({ type: 'TOGGLE' })"
       >
         <FontAwesomeIcon :icon="faPause" />
       </button>
 
       <button
+        v-if="state.value === 'paused' || state.value === 'idle'"
         title="Start timer"
-        @click="handler"
+        @click="send({ type: 'TOGGLE' })"
       >
         <FontAwesomeIcon :icon="faPlay" />
       </button>
