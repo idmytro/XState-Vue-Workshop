@@ -1,20 +1,18 @@
 <script setup>
-import {useReducer} from '../../composables/useReducer';
 import {faPlay, faPause} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome';
 import ProgressCircle from '../../components/ProgressCircle.vue';
 
-// Import the timer machine and its initial state:
-// import { ... } from './timerMachine';
+// import { useMachine } from '@xstate/vue';
+// import {timerMachine} from './timerMachine';
+
+const [state, send] = [{}, () => {}];
 
 const {duration, elapsed, interval} = {
 	duration: 60,
 	elapsed: 0,
 	interval: 0.1,
 };
-
-const state = ''; // delete me - useReducer instead!
-function dispatch () {} // delete me - useReducer instead!
 </script>
 
 <template>
@@ -37,13 +35,14 @@ function dispatch () {} // delete me - useReducer instead!
       <div class="label">{{ state }}</div>
       <div
         class="elapsed"
-        @click="dispatch"
+        @click="send"
       >
         {{ Math.ceil(duration - elapsed) }}
       </div>
       <div class="controls">
         <button
-        @click="dispatch"
+          :class="state === 'paused' ? '' : 'invisible'"
+          @click="send"
         >
           Reset
         </button>
@@ -51,15 +50,16 @@ function dispatch () {} // delete me - useReducer instead!
     </div>
     <div class="actions">
       <button
-        @click="dispatch"
         title="Pause timer"
+        :class="state === 'running' ? '' : 'invisible'"
+        @click="send"
       >
         <FontAwesomeIcon :icon="faPause" />
       </button>
 
       <button
-        @click="handler"
         title="Start timer"
+        @click="send"
       >
         <FontAwesomeIcon :icon="faPlay" />
       </button>

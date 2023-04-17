@@ -43,7 +43,7 @@ function dispatch () {} // delete me - useReducer instead!
       </div>
       <div class="controls">
         <button
-        @click="dispatch"
+          @click="dispatch"
         >
           Reset
         </button>
@@ -51,15 +51,15 @@ function dispatch () {} // delete me - useReducer instead!
     </div>
     <div class="actions">
       <button
-        @click="dispatch"
         title="Pause timer"
+        @click="dispatch"
       >
         <FontAwesomeIcon :icon="faPause" />
       </button>
 
       <button
-        @click="handler"
         title="Start timer"
+        @click="handler"
       >
         <FontAwesomeIcon :icon="faPlay" />
       </button>
