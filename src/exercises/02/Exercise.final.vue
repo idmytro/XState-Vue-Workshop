@@ -1,25 +1,21 @@
 <script setup>
-import {useReducer} from '../../composables/useReducer';
+import {computed} from 'vue';
 import {faPlay, faPause} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome';
+import {useMachine} from '@xstate/vue';
 import ProgressCircle from '../../components/ProgressCircle.vue';
-import {timerMachine, timerMachineConfig} from './timerMachine.final';
+import {timerMachine} from './timerMachine.final';
 
-const [state, dispatch] = useReducer(
-	timerMachine,
-	timerMachineConfig.initial,
-);
+const {state, send} = useMachine(timerMachine);
 
-const {duration, elapsed, interval} = {
-	duration: 60,
-	elapsed: 0,
-	interval: 0.1,
-};
+const {elapsed, interval} = state.value.context;
+
+const duration = computed(() => state.value.context.duration);
 </script>
 
 <template>
 	<div
-		:data-state="state"
+		:data-state="state.value"
 		class="timer"
 		:style="`
 			--duration: ${duration};
@@ -28,46 +24,53 @@ const {duration, elapsed, interval} = {
 		`"
 	>
 		<header>
-			<h1>Exercise 00 Solution</h1>
+			<h1>Exercise 02 Solution</h1>
 		</header>
 
 		<ProgressCircle />
 
 		<div class="display">
 			<div class="label">
-				{{ state }}
+				{{ state.value }}
 			</div>
 
 			<div
 				class="elapsed"
-				@click="dispatch({type: 'TOGGLE'})"
+				@click="send('TOGGLE')"
 			>
 				{{ Math.ceil(duration - elapsed) }}
 			</div>
 
 			<div class="controls">
 				<button
-					:class="state === 'paused' ? '' : 'invisible'"
-					@click="dispatch({type: 'RESET'})"
+					v-if="state.value !== 'running'"
+					@click="send('RESET')"
 				>
 					Reset
+				</button>
+
+				<button
+					v-if="state.value === 'running'"
+					@click="send('ADD_MINUTE')"
+				>
+					+ 1:00
 				</button>
 			</div>
 		</div>
 
 		<div class="actions">
 			<button
-				v-if="state === 'running'"
+				v-if="state.value === 'running'"
 				title="Pause timer"
-				@click="dispatch({type: 'TOGGLE'})"
+				@click="send('TOGGLE')"
 			>
 				<FontAwesomeIcon :icon="faPause" />
 			</button>
 
 			<button
-				v-if="state === 'idle' || state === 'paused'"
+				v-if="state.value === 'paused' || state.value === 'idle'"
 				title="Start timer"
-				@click="dispatch({type: 'TOGGLE'})"
+				@click="send('TOGGLE')"
 			>
 				<FontAwesomeIcon :icon="faPlay" />
 			</button>

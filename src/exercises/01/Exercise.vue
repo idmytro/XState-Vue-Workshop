@@ -17,13 +17,13 @@ const {duration, elapsed, interval} = {
 
 <template>
 	<div
-		:data-state="state"
+		:data-state="state.value"
 		class="timer"
 		:style="`
-      --duration: ${duration},
-      --elapsed: ${elapsed},
-      --interval: ${interval},
-    `"
+			--duration: ${duration};
+			--elapsed: ${elapsed};
+			--interval: ${interval};
+		`"
 	>
 		<header>
 			<h1>Exercise 01</h1>

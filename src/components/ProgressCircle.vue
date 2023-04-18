@@ -12,6 +12,7 @@
 			cy="50"
 			pathLength="1"
 		/>
+
 		<circle
 			class="progress"
 			r="40"
