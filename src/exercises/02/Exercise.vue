@@ -20,9 +20,9 @@ const {duration, elapsed, interval} = {
 		:data-state="state"
 		class="timer"
 		:style="`
-      --duration: ${duration},
-      --elapsed: ${elapsed},
-      --interval: ${interval},
+			--duration: ${duration},
+			--elapsed: ${elapsed},
+			--interval: ${interval},
     `"
 	>
 		<header>
