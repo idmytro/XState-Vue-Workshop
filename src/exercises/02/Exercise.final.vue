@@ -17,7 +17,7 @@ const {duration, elapsed, interval} = {
 
 <template>
 	<div
-		:data-state="state"
+		:data-state="state.value"
 		class="timer"
 		:style="`
 			--duration: ${duration};
