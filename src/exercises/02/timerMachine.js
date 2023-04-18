@@ -1,4 +1,32 @@
-import {createMachine} from 'xstate';
+import {createMachine, assign} from 'xstate';
 
-// Use the machine you created in Exercise 00
-// export const timerMachine = // ...
+export const timerMachine = createMachine({
+	initial: 'idle',
+	// Add initial context
+	// ...
+
+	states: {
+		idle: {
+			// Reset duration and elapsed on entry
+			// ...
+
+			on: {
+				TOGGLE: 'running',
+			},
+		},
+		running: {
+			on: {
+				TOGGLE: 'paused',
+
+				// On ADD_MINUTE, increment context.duration by 60 seconds
+				// ...
+			},
+		},
+		paused: {
+			on: {
+				TOGGLE: 'running',
+				RESET: 'idle',
+			},
+		},
+	},
+});
