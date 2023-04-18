@@ -16,53 +16,58 @@ const {duration, elapsed, interval} = {
 </script>
 
 <template>
-  <div
-    :data-state="state"
-    class="timer"
-    :style="`
+	<div
+		:data-state="state"
+		class="timer"
+		:style="`
       --duration: ${duration},
       --elapsed: ${elapsed},
       --interval: ${interval},
     `"
-  >
-    <header>
-      <h1>Exercise 01</h1>
-    </header>
+	>
+		<header>
+			<h1>Exercise 01</h1>
+		</header>
 
-    <ProgressCircle />
+		<ProgressCircle />
 
-    <div class="display">
-      <div class="label">{{ state }}</div>
-      <div
-        class="elapsed"
-        @click="send"
-      >
-        {{ Math.ceil(duration - elapsed) }}
-      </div>
-      <div class="controls">
-        <button
-          :class="state === 'paused' ? '' : 'invisible'"
-          @click="send"
-        >
-          Reset
-        </button>
-      </div>
-    </div>
-    <div class="actions">
-      <button
-        title="Pause timer"
-        :class="state === 'running' ? '' : 'invisible'"
-        @click="send"
-      >
-        <FontAwesomeIcon :icon="faPause" />
-      </button>
+		<div class="display">
+			<div class="label">
+				{{ state }}
+			</div>
 
-      <button
-        title="Start timer"
-        @click="send"
-      >
-        <FontAwesomeIcon :icon="faPlay" />
-      </button>
-    </div>
-  </div>
+			<div
+				class="elapsed"
+				@click="send"
+			>
+				{{ Math.ceil(duration - elapsed) }}
+			</div>
+
+			<div class="controls">
+				<button
+					:class="state === 'paused' ? '' : 'invisible'"
+					@click="send"
+				>
+					Reset
+				</button>
+			</div>
+		</div>
+
+		<div class="actions">
+			<button
+				title="Pause timer"
+				:class="state === 'running' ? '' : 'invisible'"
+				@click="send"
+			>
+				<FontAwesomeIcon :icon="faPause" />
+			</button>
+
+			<button
+				title="Start timer"
+				@click="send"
+			>
+				<FontAwesomeIcon :icon="faPlay" />
+			</button>
+		</div>
+	</div>
 </template>

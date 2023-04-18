@@ -4,7 +4,7 @@ module.exports = {
 		es2021: true,
 	},
 	extends: [
-		'plugin:vue/vue3-essential',
+		'plugin:vue/vue3-recommended',
 		'xo',
 	],
 	overrides: [
@@ -20,6 +20,11 @@ module.exports = {
 		'capitalized-comments': 'off',
 		'no-unused-vars': 'warn',
 		'space-before-function-paren': ['error', 'always'],
+
+		'vue/html-indent': ['error', 'tab'],
 		'vue/multi-word-component-names': 'off',
+		'vue/padding-line-between-tags': [1, [
+			{blankLine: 'always', prev: '*', next: '*'},
+		]],
 	},
 };
