@@ -16,54 +16,59 @@ const {duration, elapsed, interval} = {
 </script>
 
 <template>
-  <div
-    :data-state="state"
-    class="timer"
-    :style="`
-      --duration: ${duration},
-      --elapsed: ${elapsed},
-      --interval: ${interval},
-    `"
-  >
-    <header>
-      <h1>Exercise 01 Solution</h1>
-    </header>
+	<div
+		:data-state="state"
+		class="timer"
+		:style="`
+			--duration: ${duration};
+			--elapsed: ${elapsed};
+			--interval: ${interval};
+		`"
+	>
+		<header>
+			<h1>Exercise 01 Solution</h1>
+		</header>
 
-    <ProgressCircle />
+		<ProgressCircle />
 
-    <div class="display">
-      <div class="label">{{ state.value }}</div>
-      <div
-        class="elapsed"
-        @click="send({ type: 'TOGGLE' })"
-      >
-        {{ Math.ceil(duration - elapsed) }}
-      </div>
-      <div class="controls">
-        <button
-          :class="state.value === 'paused' ? '' : 'invisible'"
-          @click="send({ type: 'RESET' })"
-        >
-          Reset
-        </button>
-      </div>
-    </div>
-    <div class="actions">
-      <button
-        v-if="state.value === 'running'"
-        title="Pause timer"
-        @click="send({ type: 'TOGGLE' })"
-      >
-        <FontAwesomeIcon :icon="faPause" />
-      </button>
+		<div class="display">
+			<div class="label">
+				{{ state.value }}
+			</div>
 
-      <button
-        v-if="state.value === 'paused' || state.value === 'idle'"
-        title="Start timer"
-        @click="send({ type: 'TOGGLE' })"
-      >
-        <FontAwesomeIcon :icon="faPlay" />
-      </button>
-    </div>
-  </div>
+			<div
+				class="elapsed"
+				@click="send({ type: 'TOGGLE' })"
+			>
+				{{ Math.ceil(duration - elapsed) }}
+			</div>
+
+			<div class="controls">
+				<button
+					:class="state.value === 'paused' ? '' : 'invisible'"
+					@click="send({ type: 'RESET' })"
+				>
+					Reset
+				</button>
+			</div>
+		</div>
+
+		<div class="actions">
+			<button
+				v-if="state.value === 'running'"
+				title="Pause timer"
+				@click="send({ type: 'TOGGLE' })"
+			>
+				<FontAwesomeIcon :icon="faPause" />
+			</button>
+
+			<button
+				v-if="state.value === 'paused' || state.value === 'idle'"
+				title="Start timer"
+				@click="send({ type: 'TOGGLE' })"
+			>
+				<FontAwesomeIcon :icon="faPlay" />
+			</button>
+		</div>
+	</div>
 </template>
