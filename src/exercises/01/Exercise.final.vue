@@ -1,9 +1,8 @@
 <script setup>
 import {faPlay, faPause} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome';
-import ProgressCircle from '../../components/ProgressCircle.vue';
-
 import {useMachine} from '@xstate/vue';
+import ProgressCircle from '../../components/ProgressCircle.vue';
 import {timerMachine} from './timerMachine.final';
 
 const {state, send} = useMachine(timerMachine);

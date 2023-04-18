@@ -1,18 +1,16 @@
 <script setup>
+import {computed} from 'vue';
 import {faPlay, faPause} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome';
-import ProgressCircle from '../../components/ProgressCircle.vue';
-
 import {useMachine} from '@xstate/vue';
+import ProgressCircle from '../../components/ProgressCircle.vue';
 import {timerMachine} from './timerMachine.final';
 
 const {state, send} = useMachine(timerMachine);
 
-const {duration, elapsed, interval} = {
-	duration: 60,
-	elapsed: 0,
-	interval: 0.1,
-};
+const {elapsed, interval} = state.value.context;
+
+const duration = computed(() => state.value.context.duration);
 </script>
 
 <template>
@@ -38,17 +36,24 @@ const {duration, elapsed, interval} = {
 
 			<div
 				class="elapsed"
-				@click="send({ type: 'TOGGLE' })"
+				@click="send('TOGGLE')"
 			>
 				{{ Math.ceil(duration - elapsed) }}
 			</div>
 
 			<div class="controls">
 				<button
-					:class="state.value === 'paused' ? '' : 'invisible'"
-					@click="send({ type: 'RESET' })"
+					v-if="state.value !== 'running'"
+					@click="send('RESET')"
 				>
 					Reset
+				</button>
+
+				<button
+					v-if="state.value === 'running'"
+					@click="send('ADD_MINUTE')"
+				>
+					+ 1:00
 				</button>
 			</div>
 		</div>
@@ -57,7 +62,7 @@ const {duration, elapsed, interval} = {
 			<button
 				v-if="state.value === 'running'"
 				title="Pause timer"
-				@click="send({ type: 'TOGGLE' })"
+				@click="send('TOGGLE')"
 			>
 				<FontAwesomeIcon :icon="faPause" />
 			</button>
@@ -65,7 +70,7 @@ const {duration, elapsed, interval} = {
 			<button
 				v-if="state.value === 'paused' || state.value === 'idle'"
 				title="Start timer"
-				@click="send({ type: 'TOGGLE' })"
+				@click="send('TOGGLE')"
 			>
 				<FontAwesomeIcon :icon="faPlay" />
 			</button>

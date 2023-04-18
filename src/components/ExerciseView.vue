@@ -5,7 +5,7 @@ import Readme01 from '../exercises/01/README.md';
 import Readme02 from '../exercises/02/README.md';
 import Excercise00 from '../exercises/00/Exercise.vue';
 import Excercise01 from '../exercises/01/Exercise.vue';
-import Excercise02 from '../exercises/02/Exercise.vue';
+import Excercise02 from '../exercises/02/Exercise.final.vue';
 
 const readmes = {
 	'00': Readme00,
