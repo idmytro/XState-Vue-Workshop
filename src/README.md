@@ -11,11 +11,11 @@ Edit the `/components/Scratch.vue` file to practice new lessons and techniques. 
 
 - [Exercise 00](./00)
 - [Exercise 01](./01)
-<!--- [Exercise 02](./02)
-- [Exercise 03](./03)
-- [Exercise 04](./04)
-- [Exercise 05](./05)
-- [Exercise 06](./06)
-- [Exercise 07](./07)
-- [Exercise 08](./08)
-- [Complete App](./complete) -->
+- [Exercise 02](./02)
+<!-- - [Exercise 03](./03) -->
+<!-- - [Exercise 04](./04) -->
+<!-- - [Exercise 05](./05) -->
+<!-- - [Exercise 06](./06) -->
+<!-- - [Exercise 07](./07) -->
+<!-- - [Exercise 08](./08) -->
+<!-- - [Complete App](./complete) -->
