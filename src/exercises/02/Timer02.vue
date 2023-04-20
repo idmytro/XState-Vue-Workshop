@@ -3,7 +3,7 @@ import {faPlay, faPause} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome';
 import {useMachine} from '@xstate/vue';
 import ProgressCircle from '../../components/ProgressCircle.vue';
-import {timerMachine} from './timerMachine.final';
+import {timerMachine} from './timerMachine02';
 
 const {state, send} = useMachine(timerMachine);
 
@@ -16,7 +16,7 @@ const {duration, elapsed, interval} = {
 
 <template>
 	<div
-		:data-state="state"
+		:data-state="state.value"
 		class="timer"
 		:style="`
 			--duration: ${duration};
@@ -25,7 +25,7 @@ const {duration, elapsed, interval} = {
 		`"
 	>
 		<header>
-			<h1>Exercise 01 Solution</h1>
+			<h1>Exercise 02</h1>
 		</header>
 
 		<ProgressCircle />
@@ -37,17 +37,23 @@ const {duration, elapsed, interval} = {
 
 			<div
 				class="elapsed"
-				@click="send({ type: 'TOGGLE' })"
+				@click="send"
 			>
 				{{ Math.ceil(duration - elapsed) }}
 			</div>
 
 			<div class="controls">
 				<button
-					:class="state.value === 'paused' ? '' : 'invisible'"
-					@click="send({ type: 'RESET' })"
+					v-if="state !== 'running'"
+					@click="send('RESET')"
 				>
 					Reset
+				</button>
+
+				<button
+					@click="send"
+				>
+					+ 1:00
 				</button>
 			</div>
 		</div>
@@ -64,7 +70,7 @@ const {duration, elapsed, interval} = {
 			<button
 				v-if="state.value === 'paused' || state.value === 'idle'"
 				title="Start timer"
-				@click="send({ type: 'TOGGLE' })"
+				@click="send"
 			>
 				<FontAwesomeIcon :icon="faPlay" />
 			</button>

@@ -1,14 +1,11 @@
 <script setup>
-import {useReducer} from '../../composables/useReducer';
 import {faPlay, faPause} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome';
+import {useMachine} from '@xstate/vue';
 import ProgressCircle from '../../components/ProgressCircle.vue';
-import {timerMachine, timerMachineConfig} from './timerMachine.final';
+import {timerMachine} from './timerMachine01.final';
 
-const [state, dispatch] = useReducer(
-	timerMachine,
-	timerMachineConfig.initial,
-);
+const {state, send} = useMachine(timerMachine);
 
 const {duration, elapsed, interval} = {
 	duration: 60,
@@ -28,27 +25,27 @@ const {duration, elapsed, interval} = {
 		`"
 	>
 		<header>
-			<h1>Exercise 00 Solution</h1>
+			<h1>Exercise 01 Solution</h1>
 		</header>
 
 		<ProgressCircle />
 
 		<div class="display">
 			<div class="label">
-				{{ state }}
+				{{ state.value }}
 			</div>
 
 			<div
 				class="elapsed"
-				@click="dispatch({type: 'TOGGLE'})"
+				@click="send({ type: 'TOGGLE' })"
 			>
 				{{ Math.ceil(duration - elapsed) }}
 			</div>
 
 			<div class="controls">
 				<button
-					:class="state === 'paused' ? '' : 'invisible'"
-					@click="dispatch({type: 'RESET'})"
+					:class="state.value === 'paused' ? '' : 'invisible'"
+					@click="send({ type: 'RESET' })"
 				>
 					Reset
 				</button>
@@ -57,17 +54,17 @@ const {duration, elapsed, interval} = {
 
 		<div class="actions">
 			<button
-				v-if="state === 'running'"
+				v-if="state.value === 'running'"
 				title="Pause timer"
-				@click="dispatch({type: 'TOGGLE'})"
+				@click="send({ type: 'TOGGLE' })"
 			>
 				<FontAwesomeIcon :icon="faPause" />
 			</button>
 
 			<button
-				v-if="state === 'idle' || state === 'paused'"
+				v-if="state.value === 'paused' || state.value === 'idle'"
 				title="Start timer"
-				@click="dispatch({type: 'TOGGLE'})"
+				@click="send({ type: 'TOGGLE' })"
 			>
 				<FontAwesomeIcon :icon="faPlay" />
 			</button>
