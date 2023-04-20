@@ -19,6 +19,11 @@ const routes = [
 		name: 'ExerciseView',
 		component: ExerciseView,
 	},
+	{
+		path: '/:id/final',
+		name: 'SolutionView',
+		component: ExerciseView,
+	},
 ];
 
 const router = createRouter({

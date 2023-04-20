@@ -9,10 +9,10 @@ Edit the `/components/Scratch.vue` file to practice new lessons and techniques. 
 
 ## Exercises
 
-- [Exercise 00](./00)
-- [Exercise 01](./01)
-- [Exercise 02](./02)
-<!-- - [Exercise 03](./03) -->
+- [Exercise 00](./00) / [Solution](./00/final)
+- [Exercise 01](./01) / [Solution](./01/final)
+- [Exercise 02](./02) / [Solution](./02/final)
+- [Exercise 03](./03) / [Solution](./03/final)
 <!-- - [Exercise 04](./04) -->
 <!-- - [Exercise 05](./05) -->
 <!-- - [Exercise 06](./06) -->
