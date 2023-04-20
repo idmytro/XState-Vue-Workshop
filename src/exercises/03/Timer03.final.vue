@@ -13,7 +13,7 @@ const duration = computed(() => state.value.context.duration);
 const elapsed = computed(() => state.value.context.elapsed);
 
 watch(
-	() => [duration.value, state.value.value],
+	() => [elapsed.value, state.value.value],
 	async () => {
 		if (state.value.value !== 'running') {
 			return;
