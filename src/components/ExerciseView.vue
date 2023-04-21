@@ -4,22 +4,26 @@ import Readme00 from '../exercises/00/README.md';
 import Readme01 from '../exercises/01/README.md';
 import Readme02 from '../exercises/02/README.md';
 import Readme03 from '../exercises/03/README.md';
+import Readme04 from '../exercises/04/README.md';
 
 import Excercise00 from '../exercises/00/Timer00.vue';
 import Excercise01 from '../exercises/01/Timer01.vue';
 import Excercise02 from '../exercises/02/Timer02.vue';
 import Excercise03 from '../exercises/03/Timer03.vue';
+import Excercise04 from '../exercises/04/Timer04.vue';
 
 import Solution00 from '../exercises/00/Timer00.final.vue';
 import Solution01 from '../exercises/01/Timer01.final.vue';
 import Solution02 from '../exercises/02/Timer02.final.vue';
 import Solution03 from '../exercises/03/Timer03.final.vue';
+import Solution04 from '../exercises/04/Timer04.final.vue';
 
 const readmes = {
 	'00': Readme00,
 	'01': Readme01,
 	'02': Readme02,
 	'03': Readme03,
+	'04': Readme04,
 };
 
 const exercises = {
@@ -27,6 +31,7 @@ const exercises = {
 	'01': Excercise01,
 	'02': Excercise02,
 	'03': Excercise03,
+	'04': Excercise04,
 };
 
 const solutions = {
@@ -34,6 +39,7 @@ const solutions = {
 	'01': Solution01,
 	'02': Solution02,
 	'03': Solution03,
+	'04': Solution04,
 };
 
 const route = useRoute();
