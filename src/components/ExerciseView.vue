@@ -5,18 +5,21 @@ import Readme01 from '../exercises/01/README.md';
 import Readme02 from '../exercises/02/README.md';
 import Readme03 from '../exercises/03/README.md';
 import Readme04 from '../exercises/04/README.md';
+import Readme05 from '../exercises/05/README.md';
 
 import Excercise00 from '../exercises/00/Timer00.vue';
 import Excercise01 from '../exercises/01/Timer01.vue';
 import Excercise02 from '../exercises/02/Timer02.vue';
 import Excercise03 from '../exercises/03/Timer03.vue';
 import Excercise04 from '../exercises/04/Timer04.vue';
+import Excercise05 from '../exercises/05/Timer05.vue';
 
 import Solution00 from '../exercises/00/Timer00.final.vue';
 import Solution01 from '../exercises/01/Timer01.final.vue';
 import Solution02 from '../exercises/02/Timer02.final.vue';
 import Solution03 from '../exercises/03/Timer03.final.vue';
 import Solution04 from '../exercises/04/Timer04.final.vue';
+import Solution05 from '../exercises/05/Timer05.final.vue';
 
 const readmes = {
 	'00': Readme00,
@@ -24,6 +27,7 @@ const readmes = {
 	'02': Readme02,
 	'03': Readme03,
 	'04': Readme04,
+	'05': Readme05,
 };
 
 const exercises = {
@@ -32,6 +36,7 @@ const exercises = {
 	'02': Excercise02,
 	'03': Excercise03,
 	'04': Excercise04,
+	'05': Excercise05,
 };
 
 const solutions = {
@@ -40,6 +45,7 @@ const solutions = {
 	'02': Solution02,
 	'03': Solution03,
 	'04': Solution04,
+	'05': Solution05,
 };
 
 const route = useRoute();
