@@ -14,5 +14,6 @@ Edit the `/components/Scratch.vue` file to practice new lessons and techniques. 
 - [Exercise 02](./02) / [Solution](./02/final)
 - [Exercise 03](./03) / [Solution](./03/final)
 - [Exercise 04](./04) / [Solution](./04/final)
+- [Exercise 05](./05) / [Solution](./05/final)
 
 <!-- - [Complete App](./complete) -->
