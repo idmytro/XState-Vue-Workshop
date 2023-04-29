@@ -3,14 +3,14 @@ import {createMachine, assign} from 'xstate';
 export const timerMachine = createMachine({
 	initial: 'idle',
 	context: {
-		duration: 60,
+		duration: 6,
 		elapsed: 0,
 		interval: 0.1,
 	},
 	states: {
 		idle: {
 			entry: assign({
-				duration: 60,
+				duration: 6,
 				elapsed: 0,
 			}),
 			on: {
