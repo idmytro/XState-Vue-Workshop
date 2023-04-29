@@ -5,14 +5,14 @@ const timerExpired = ctx => ctx.elapsed >= ctx.duration;
 export const timerMachine = createMachine({
 	initial: 'idle',
 	context: {
-		duration: 5,
+		duration: 6,
 		elapsed: 0,
 		interval: 0.1,
 	},
 	states: {
 		idle: {
 			entry: assign({
-				duration: 5,
+				duration: 6,
 				elapsed: 0,
 			}),
 			on: {
