@@ -4,7 +4,7 @@ import {faPlay, faPause} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome';
 import {useMachine} from '@xstate/vue';
 import ProgressCircle from '../../components/ProgressCircle.vue';
-import {timerMachine} from './timerMachine05';
+import {timerMachine} from './timerMachine05.final';
 
 const {state, send} = useMachine(timerMachine);
 
