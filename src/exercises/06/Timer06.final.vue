@@ -21,7 +21,7 @@ watchEffect(
 
 <template>
 	<div
-		:data-state="state.value"
+		:data-state="state.toStrings().join(' ')"
 		class="timer"
 		:style="`
 			--duration: ${state.context.duration};
