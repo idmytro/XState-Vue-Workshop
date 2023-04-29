@@ -7,10 +7,6 @@ import ProgressCircle from '../../components/ProgressCircle.vue';
 import {timerMachine} from './timerMachine02.final';
 
 const {state, send} = useMachine(timerMachine);
-
-const {elapsed, interval} = state.value.context;
-
-const duration = computed(() => state.value.context.duration);
 </script>
 
 <template>
@@ -18,9 +14,9 @@ const duration = computed(() => state.value.context.duration);
 		:data-state="state.value"
 		class="timer"
 		:style="`
-			--duration: ${duration};
-			--elapsed: ${elapsed};
-			--interval: ${interval};
+			--duration: ${state.context.duration};
+			--elapsed: ${state.context.elapsed};
+			--interval: ${state.context.interval};
 		`"
 	>
 		<header>
@@ -38,7 +34,7 @@ const duration = computed(() => state.value.context.duration);
 				class="elapsed"
 				@click="send('TOGGLE')"
 			>
-				{{ Math.ceil(duration - elapsed) }}
+				{{ Math.ceil(state.context.duration - state.context.elapsed) }}
 			</div>
 
 			<div class="controls">

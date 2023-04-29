@@ -1,5 +1,5 @@
 <script setup>
-import {computed, watchEffect} from 'vue';
+import {watchEffect} from 'vue';
 import {faPlay, faPause} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome';
 import {useMachine} from '@xstate/vue';
@@ -7,16 +7,13 @@ import ProgressCircle from '../../components/ProgressCircle.vue';
 import {timerMachine} from './timerMachine03.final';
 
 const {state, send} = useMachine(timerMachine);
-const {interval} = state.value.context;
-const duration = computed(() => state.value.context.duration);
-const elapsed = computed(() => state.value.context.elapsed);
 
 watchEffect(
 	onCleanup => {
 		if (state.value.value === 'running') {
 			const intervalId = setInterval(() => {
 				send('TICK');
-			}, interval * 1000);
+			}, state.context.interval * 1000);
 
 			onCleanup(() => clearInterval(intervalId));
 		}
@@ -29,9 +26,9 @@ watchEffect(
 		:data-state="state.value"
 		class="timer"
 		:style="`
-			--duration: ${duration};
-			--elapsed: ${elapsed};
-			--interval: ${interval};
+			--duration: ${state.context.duration};
+			--elapsed: ${state.context.elapsed};
+			--interval: ${state.context.interval};
 		`"
 	>
 		<header>
@@ -49,7 +46,7 @@ watchEffect(
 				class="elapsed"
 				@click="send('TOGGLE')"
 			>
-				{{ Math.ceil(duration - elapsed) }}
+				{{ Math.ceil(state.context.duration - state.context.elapsed) }}
 			</div>
 
 			<div class="controls">
