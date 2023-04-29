@@ -1,10 +1,9 @@
 <script setup>
-import {computed, watch} from 'vue';
+import {computed, watchEffect} from 'vue';
 import {faPlay, faPause} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome';
 import {useMachine} from '@xstate/vue';
 import ProgressCircle from '../../components/ProgressCircle.vue';
-import {delay} from '../../utils/delay';
 import {timerMachine} from './timerMachine03.final';
 
 const {state, send} = useMachine(timerMachine);
@@ -12,17 +11,16 @@ const {interval} = state.value.context;
 const duration = computed(() => state.value.context.duration);
 const elapsed = computed(() => state.value.context.elapsed);
 
-watch(
-	() => [elapsed.value, state.value.value],
-	async () => {
-		if (state.value.value !== 'running') {
-			return;
-		}
+watchEffect(
+	onCleanup => {
+		if (state.value.value === 'running') {
+			const intervalId = setInterval(() => {
+				send('TICK');
+			}, interval * 1000);
 
-		await delay(interval * 1000);
-		send('TICK');
+			onCleanup(() => clearInterval(intervalId));
+		}
 	},
-	{immediate: true},
 );
 </script>
 
