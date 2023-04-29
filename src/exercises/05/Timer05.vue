@@ -10,13 +10,11 @@ const {state, send} = useMachine(timerMachine);
 
 watchEffect(
 	onCleanup => {
-		if (state.value.value === 'running') {
-			const intervalId = setInterval(() => {
-				send('TICK');
-			}, state.value.context.interval * 1000);
+		const intervalId = setInterval(() => {
+			send('TICK');
+		}, state.value.context.interval * 1000);
 
-			onCleanup(() => clearInterval(intervalId));
-		}
+		onCleanup(() => clearInterval(intervalId));
 	},
 );
 </script>

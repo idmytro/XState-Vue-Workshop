@@ -1,27 +1,16 @@
 <script setup>
-import {watchEffect} from 'vue';
-import {faPlay, faPause} from '@fortawesome/free-solid-svg-icons';
+import {faPlay, faPause, faStop} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome';
 import {useMachine} from '@xstate/vue';
 import ProgressCircle from '../../components/ProgressCircle.vue';
-import {timerMachine} from './timerMachine04.final';
+import {timerMachine} from './timerMachine07.final';
 
 const {state, send} = useMachine(timerMachine);
-
-watchEffect(
-	onCleanup => {
-		const intervalId = setInterval(() => {
-			send('TICK');
-		}, state.value.context.interval * 1000);
-
-		onCleanup(() => clearInterval(intervalId));
-	},
-);
 </script>
 
 <template>
 	<div
-		:data-state="state.value"
+		:data-state="state.toStrings().join(' ')"
 		class="timer"
 		:style="`
 			--duration: ${state.context.duration};
@@ -30,14 +19,14 @@ watchEffect(
 		`"
 	>
 		<header>
-			<h1>Exercise 04 Solution</h1>
+			<h1>Exercise 07 Solution</h1>
 		</header>
 
 		<ProgressCircle />
 
 		<div class="display">
 			<div class="label">
-				{{ state.value }}
+				{{ state.toStrings().slice(-1).toString() }}
 			</div>
 
 			<div
@@ -49,14 +38,14 @@ watchEffect(
 
 			<div class="controls">
 				<button
-					v-if="state.value !== 'running'"
+					v-if="!state.matches({ running: 'normal' })"
 					@click="send('RESET')"
 				>
 					Reset
 				</button>
 
 				<button
-					v-if="state.value === 'running'"
+					v-else
 					@click="send('ADD_MINUTE')"
 				>
 					+ 1:00
@@ -66,7 +55,7 @@ watchEffect(
 
 		<div class="actions">
 			<button
-				v-if="state.value === 'running'"
+				v-if="state.matches({ running: 'normal' })"
 				title="Pause timer"
 				@click="send('TOGGLE')"
 			>
@@ -74,7 +63,15 @@ watchEffect(
 			</button>
 
 			<button
-				v-if="state.value === 'paused' || state.value === 'idle'"
+				v-if="state.matches({ running: 'overtime' })"
+				title="Reset timer"
+				@click="send('RESET')"
+			>
+				<FontAwesomeIcon :icon="faStop" />
+			</button>
+
+			<button
+				v-if="state.matches('paused') || state.matches('idle')"
 				title="Start timer"
 				@click="send('TOGGLE')"
 			>

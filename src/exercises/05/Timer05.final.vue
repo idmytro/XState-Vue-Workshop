@@ -4,19 +4,17 @@ import {faPlay, faPause} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome';
 import {useMachine} from '@xstate/vue';
 import ProgressCircle from '../../components/ProgressCircle.vue';
-import {timerMachine} from './timerMachine05';
+import {timerMachine} from './timerMachine05.final';
 
 const {state, send} = useMachine(timerMachine);
 
 watchEffect(
 	onCleanup => {
-		if (state.value.value === 'running') {
-			const intervalId = setInterval(() => {
-				send('TICK');
-			}, state.value.context.interval * 1000);
+		const intervalId = setInterval(() => {
+			send('TICK');
+		}, state.value.context.interval * 1000);
 
-			onCleanup(() => clearInterval(intervalId));
-		}
+		onCleanup(() => clearInterval(intervalId));
 	},
 );
 </script>

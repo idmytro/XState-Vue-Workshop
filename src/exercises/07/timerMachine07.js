@@ -1,8 +1,16 @@
 import {createMachine, assign} from 'xstate';
 
+const ticker = (context, event) => callback => {
+	// This is the callback service creator.
+	// Add the implementation details here.
+	// ...
+};
+
 const timerExpired = ctx => ctx.elapsed >= ctx.duration;
 
+// https://xstate.js.org/viz/?gist=78fef4bd3ae520709ceaee62c0dd59cd
 export const timerMachine = createMachine({
+	id: 'timer',
 	initial: 'idle',
 	context: {
 		duration: 6,
@@ -17,14 +25,31 @@ export const timerMachine = createMachine({
 			}),
 			on: {
 				TOGGLE: 'running',
+				RESET: undefined,
 			},
 		},
 		running: {
-			on: {
-				// Add an eventless (always) transition that checks if the timer is expired.
-				// If so, go to the `expired` state.
-				// ...
+			// Invoke the callback service here.
+			// ...
 
+			initial: 'normal',
+			states: {
+				normal: {
+					always: {
+						target: 'overtime',
+						cond: timerExpired,
+					},
+					on: {
+						RESET: undefined,
+					},
+				},
+				overtime: {
+					on: {
+						TOGGLE: undefined,
+					},
+				},
+			},
+			on: {
 				TICK: {
 					actions: assign({
 						elapsed: ctx => ctx.elapsed + ctx.interval,
@@ -39,15 +64,12 @@ export const timerMachine = createMachine({
 			},
 		},
 		paused: {
-			on: {
-				TOGGLE: 'running',
-				RESET: 'idle',
-			},
+			on: {TOGGLE: 'running'},
 		},
-		expired: {
-			on: {
-				RESET: 'idle',
-			},
+	},
+	on: {
+		RESET: {
+			target: '.idle',
 		},
 	},
 });

@@ -1,8 +1,17 @@
 import {createMachine, assign} from 'xstate';
 
+const ticker = ctx => cb => {
+	const interval = setInterval(() => {
+		cb('TICK');
+	}, ctx.interval * 1000);
+	return () => clearInterval(interval);
+};
+
 const timerExpired = ctx => ctx.elapsed >= ctx.duration;
 
+// https://xstate.js.org/viz/?gist=78fef4bd3ae520709ceaee62c0dd59cd
 export const timerMachine = createMachine({
+	id: 'timer',
 	initial: 'idle',
 	context: {
 		duration: 6,
@@ -17,12 +26,30 @@ export const timerMachine = createMachine({
 			}),
 			on: {
 				TOGGLE: 'running',
+				RESET: undefined,
 			},
 		},
 		running: {
-			always: {
-				target: 'expired',
-				cond: timerExpired,
+			invoke: {
+				id: 'ticker', // only used for viz
+				src: ticker,
+			},
+			initial: 'normal',
+			states: {
+				normal: {
+					always: {
+						target: 'overtime',
+						cond: timerExpired,
+					},
+					on: {
+						RESET: undefined,
+					},
+				},
+				overtime: {
+					on: {
+						TOGGLE: undefined,
+					},
+				},
 			},
 			on: {
 				TICK: {
@@ -39,15 +66,12 @@ export const timerMachine = createMachine({
 			},
 		},
 		paused: {
-			on: {
-				TOGGLE: 'running',
-				RESET: 'idle',
-			},
+			on: {TOGGLE: 'running'},
 		},
-		expired: {
-			on: {
-				RESET: 'idle',
-			},
+	},
+	on: {
+		RESET: {
+			target: '.idle',
 		},
 	},
 });
