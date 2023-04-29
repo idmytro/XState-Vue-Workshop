@@ -13,7 +13,7 @@ watchEffect(
 		if (state.value.value === 'running') {
 			const intervalId = setInterval(() => {
 				send('TICK');
-			}, state.context.interval * 1000);
+			}, state.value.context.interval * 1000);
 
 			onCleanup(() => clearInterval(intervalId));
 		}
