@@ -18,6 +18,7 @@ module.exports = {
 	],
 	rules: {
 		'capitalized-comments': 'off',
+		curly: ['error', 'multi-line'],
 		'no-unused-vars': 'warn',
 		'space-before-function-paren': ['error', 'always'],
 
