@@ -8,6 +8,7 @@ import Readme04 from '../exercises/04/README.md';
 import Readme05 from '../exercises/05/README.md';
 import Readme06 from '../exercises/06/README.md';
 import Readme07 from '../exercises/07/README.md';
+import Readme08 from '../exercises/08/README.md';
 
 import Excercise00 from '../exercises/00/Timer00.vue';
 import Excercise01 from '../exercises/01/Timer01.vue';
@@ -17,6 +18,7 @@ import Excercise04 from '../exercises/04/Timer04.vue';
 import Excercise05 from '../exercises/05/Timer05.vue';
 import Excercise06 from '../exercises/06/Timer06.vue';
 import Excercise07 from '../exercises/07/Timer07.vue';
+import Excercise08 from '../exercises/08/App.vue';
 
 import Solution00 from '../exercises/00/Timer00.final.vue';
 import Solution01 from '../exercises/01/Timer01.final.vue';
@@ -26,6 +28,7 @@ import Solution04 from '../exercises/04/Timer04.final.vue';
 import Solution05 from '../exercises/05/Timer05.final.vue';
 import Solution06 from '../exercises/06/Timer06.final.vue';
 import Solution07 from '../exercises/07/Timer07.final.vue';
+import Solution08 from '../exercises/08/App.final.vue';
 
 const readmes = {
 	'00': Readme00,
@@ -36,6 +39,7 @@ const readmes = {
 	'05': Readme05,
 	'06': Readme06,
 	'07': Readme07,
+	'08': Readme08,
 };
 
 const exercises = {
@@ -47,6 +51,7 @@ const exercises = {
 	'05': Excercise05,
 	'06': Excercise06,
 	'07': Excercise07,
+	'08': Excercise08,
 };
 
 const solutions = {
@@ -58,6 +63,7 @@ const solutions = {
 	'05': Solution05,
 	'06': Solution06,
 	'07': Solution07,
+	'08': Solution08,
 };
 
 const route = useRoute();
