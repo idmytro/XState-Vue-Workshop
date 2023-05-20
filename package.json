@@ -14,6 +14,7 @@
     "@fortawesome/free-solid-svg-icons": "^6.4.0",
     "@fortawesome/vue-fontawesome": "^3.0.3",
     "@xstate/vue": "^2.0.0",
+    "element-plus": "^2.3.5",
     "sass": "^1.62.0",
     "vue": "^3.2.45",
     "vue-router": "^4.1.6",
