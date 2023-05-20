@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import {timerAppMachine} from './timerAppMachine';
 
 </script>
 
