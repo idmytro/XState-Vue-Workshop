@@ -3,10 +3,6 @@ import {ref} from 'vue';
 import {timerAppMachine} from './timerAppMachine';
 
 const activeName = ref('clock');
-
-const handleClick = (tab, event) => {
-	console.log(tab, event);
-};
 </script>
 
 <template>
@@ -108,7 +104,6 @@ const handleClick = (tab, event) => {
 	<el-tabs
 		v-model="activeName"
 		class="exercise-08"
-		@tab-click="handleClick"
 	>
 		<el-tab-pane
 			label="Clock"
